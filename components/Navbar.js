@@ -41,7 +41,7 @@ const Navbar = () => {
 					Delichef
 				</Box>
 			</Link>
-			<HStack justifyContent='space-between' flex={2 / 3}>
+			<HStack justifyContent='space-between' flex={{ base: 1, lg: 2 / 3 }}>
 				<NavLink text='home' href='/' active={path == '/'} />
 				<NavLink
 					text='recipes'

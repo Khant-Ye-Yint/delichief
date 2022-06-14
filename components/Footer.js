@@ -39,7 +39,11 @@ const Footer = () => {
 			>
 				{new Date().getFullYear()}
 			</Box>
-			<HStack flex='1' justifyContent='flex-end' columnGap='70px'>
+			<HStack
+				flex='1'
+				justifyContent='flex-end'
+				columnGap={{ base: '40px', lg: '70px' }}
+			>
 				<SocialLink Wrapper={BsFacebook} href='#' />
 				<SocialLink Wrapper={BsTwitter} href='#' />
 				<SocialLink Wrapper={BsInstagram} href='#' />
