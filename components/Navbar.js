@@ -36,6 +36,7 @@ const Navbar = () => {
 					fontWeight='bold'
 					flex={1}
 					cursor='pointer'
+					fontFamily='dosis'
 				>
 					Delichef
 				</Box>

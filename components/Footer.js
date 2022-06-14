@@ -24,6 +24,7 @@ const Footer = () => {
 					fontSize='48px'
 					color='primary.100'
 					fontWeight='bold'
+					fontFamily='dosis'
 					flex={1}
 					cursor='pointer'
 				>
