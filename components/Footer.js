@@ -1,4 +1,4 @@
-import { HStack, Box } from '@chakra-ui/react';
+import { HStack, Box, Stack } from '@chakra-ui/react';
 import Link from 'next/link';
 import { BsFacebook, BsTwitter, BsInstagram } from 'react-icons/bs';
 
@@ -18,7 +18,15 @@ const SocialLink = ({ href, Wrapper }) => {
 
 const Footer = () => {
 	return (
-		<HStack w='full' h='10vh'>
+		<Stack
+			w='full'
+			minH='10vh'
+			flexDir={{ base: 'column', md: 'row' }}
+			justifyContent='space-between'
+			alignItems='center'
+			rowGap='5'
+			py='10'
+		>
 			<Link href='/'>
 				<Box
 					fontSize='48px'
@@ -48,7 +56,7 @@ const Footer = () => {
 				<SocialLink Wrapper={BsTwitter} href='#' />
 				<SocialLink Wrapper={BsInstagram} href='#' />
 			</HStack>
-		</HStack>
+		</Stack>
 	);
 };
 

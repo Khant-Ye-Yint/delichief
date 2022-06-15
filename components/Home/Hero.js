@@ -10,13 +10,12 @@ const Hero = () => {
 			minH='80vh'
 			justifyContent='space-between'
 			alignItems='center'
-			flexWrap='wrap'
 			rowGap='80px'
-			flexDir={{ base: 'column', lg: 'row' }}
+			flexDir={{ base: 'column', xl: 'row' }}
 		>
 			<VStack flex={1} alignItems='flex-start' rowGap='40px'>
 				<Box
-					fontSize='96px'
+					fontSize={{ base: '80px', md: '96px' }}
 					fontFamily='dosis'
 					color='text.100'
 					fontWeight='bold'
@@ -31,8 +30,8 @@ const Hero = () => {
 				alignItems={{ base: 'center', lg: 'flex-end' }}
 			>
 				<Box
-					w='600px'
-					h='600px'
+					w={{ base: '350px', md: '600px' }}
+					h={{ base: '350px', md: '600px' }}
 					position='relative'
 					borderRadius='50%'
 					overflow='hidden'
