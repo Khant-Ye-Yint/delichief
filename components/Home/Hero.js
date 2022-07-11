@@ -7,11 +7,12 @@ import SaladImg from '../../public/salad.jpg';
 const Hero = () => {
 	return (
 		<Stack
-			minH='80vh'
+			minH='90vh'
 			justifyContent='space-between'
 			alignItems='center'
 			rowGap='80px'
 			flexDir={{ base: 'column', xl: 'row' }}
+			mb={{ base: 20, xl: 0 }}
 		>
 			<VStack flex={1} alignItems='flex-start' rowGap='40px'>
 				<Box

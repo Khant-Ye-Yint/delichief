@@ -1,18 +1,19 @@
 import Layout from '../components/Layout';
 
-import { Box } from '@chakra-ui/react';
+import AboutMe from '../components/AboutMe';
 
 const About = () => {
 	return (
 		<Layout>
-			<Box
+			{/* <Box
 				fontSize='48px'
 				fontFamily='dosis'
 				fontWeight='bold'
 				color='text.100'
 			>
 				About
-			</Box>
+			</Box> */}
+			<AboutMe />
 		</Layout>
 	);
 };

@@ -21,6 +21,8 @@ const theme = {
 		dosis: 'Dosis',
 		saira: 'Saira',
 	},
+	initialColorMode: 'light',
+	useSystemColorMode: false,
 };
 
 export default extendTheme(theme);
