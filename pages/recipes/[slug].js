@@ -64,28 +64,28 @@ const RecipeItem = () => {
 							/>
 						</Box>
 						<VStack
-							px='10'
 							fontFamily='saira'
 							fontWeight='semibold'
 							fontSize={{ base: '1rem', md: '1.5rem' }}
 							py='5'
 							shadow='lg'
 							minW='32rem'
+							px='10'
 						>
-							<HStack justifyContent='space-between' w='full' bg='orange.200'>
-								<Box flex='1'>Serves -</Box>
+							<HStack justifyContent='space-between' w='full'>
+								<Box flex={{ base: '0.5', md: '1' }}>Serves -</Box>
 								<Box color='primary.100' flex='1'>
 									Two Adults
 								</Box>
 							</HStack>
 							<HStack justifyContent='space-between' w='full'>
-								<Box flex='1'>Preparation Time -</Box>
+								<Box flex={{ base: '0.5', md: '1' }}>Preparation Time -</Box>
 								<Box color='primary.100' flex='1'>
 									5 mins
 								</Box>
 							</HStack>
 							<HStack justifyContent='space-between' w='full'>
-								<Box flex='1'>Cooking Time -</Box>
+								<Box flex={{ base: '0.5', md: '1' }}>Cooking Time -</Box>
 								<Box color='primary.100' flex='1'>
 									5 mins
 								</Box>
@@ -141,7 +141,7 @@ const RecipeItem = () => {
 						>
 							{dummyData.directions.map((chunk, index) => (
 								<HStack
-									alignItems='flex-start'
+									alignItems='center'
 									justifyContent='flex-start'
 									spacing='3'
 									key={index}
