@@ -50,7 +50,7 @@ const RecipeItem = () => {
 				>
 					<Box
 						bg='white'
-						w={{ base: '23rem', md: '32rem' }}
+						w={{ base: '20rem', md: '32rem' }}
 						borderRadius='20'
 						overflow='hidden'
 					>
@@ -72,7 +72,7 @@ const RecipeItem = () => {
 							shadow='lg'
 							minW='32rem'
 						>
-							<HStack justifyContent='space-between' w='full'>
+							<HStack justifyContent='space-between' w='full' bg='orange.200'>
 								<Box flex='1'>Serves -</Box>
 								<Box color='primary.100' flex='1'>
 									Two Adults
@@ -141,7 +141,7 @@ const RecipeItem = () => {
 						>
 							{dummyData.directions.map((chunk, index) => (
 								<HStack
-									alignItems='center'
+									alignItems='flex-start'
 									justifyContent='flex-start'
 									spacing='3'
 									key={index}
