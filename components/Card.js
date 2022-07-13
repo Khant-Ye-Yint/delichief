@@ -3,11 +3,13 @@ import { useState } from 'react';
 import { Box, HStack, VStack, Badge, background } from '@chakra-ui/react';
 import { whiten } from '@chakra-ui/theme-tools';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 import SaladImg from '../public/salad.jpg';
 
-const Card = ({ title, mainMeat, method, alt }) => {
+const Card = ({ title, category, serves }) => {
 	const [hover, setHover] = useState(false);
+	const router = useRouter();
 
 	return (
 		<Box
@@ -21,6 +23,7 @@ const Card = ({ title, mainMeat, method, alt }) => {
 			}}
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}
+			onClick={() => router.push(`/recipes/${title}`)}
 		>
 			<Box
 				w='full'
@@ -32,7 +35,7 @@ const Card = ({ title, mainMeat, method, alt }) => {
 			>
 				<Image
 					src={SaladImg}
-					alt={alt}
+					alt={title}
 					layout='fill'
 					objectFit='cover'
 					objectPosition='center'
@@ -52,25 +55,25 @@ const Card = ({ title, mainMeat, method, alt }) => {
 						bg='secondary.100'
 						color='background'
 						fontWeight='bold'
-						fontSize={13}
+						fontSize={12}
 						fontFamily='saira'
-						px='3'
+						px='2'
 						py='1'
 						borderRadius='5'
 					>
-						{method}
+						{category}
 					</Badge>
 					<Badge
 						bg='primary.100'
 						color='background'
 						fontWeight='bold'
-						fontSize={13}
+						fontSize={12}
 						fontFamily='saira'
-						px='3'
+						px='2'
 						py='1'
 						borderRadius='5'
 					>
-						{mainMeat}
+						{serves}
 					</Badge>
 				</HStack>
 			</VStack>

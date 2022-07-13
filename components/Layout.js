@@ -11,6 +11,7 @@ const Layout = ({ children }) => {
 			justifyContent='center'
 			alignItems='center'
 			bg='background'
+			color='text.100'
 		>
 			<VStack
 				minH='100vh'

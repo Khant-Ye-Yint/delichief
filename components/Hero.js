@@ -1,8 +1,8 @@
-import { HStack, VStack, Box, Stack } from '@chakra-ui/react';
-import ButtonLink from '../ButtonLink';
+import { VStack, Box, Stack } from '@chakra-ui/react';
+import ButtonLink from './ButtonLink';
 
 import Image from 'next/image';
-import SaladImg from '../../public/salad.jpg';
+import SaladImg from '../public/salad.jpg';
 
 const Hero = () => {
 	return (
@@ -16,7 +16,7 @@ const Hero = () => {
 		>
 			<VStack flex={1} alignItems='flex-start' rowGap='40px'>
 				<Box
-					fontSize={{ base: '80px', md: '96px' }}
+					fontSize={{ base: '4.25rem', md: '6rem' }}
 					fontFamily='dosis'
 					color='text.100'
 					fontWeight='bold'

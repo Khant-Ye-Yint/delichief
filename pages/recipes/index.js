@@ -1,4 +1,4 @@
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout';
 import { Field, Formik } from 'formik';
 import {
 	Box,
@@ -13,7 +13,7 @@ import {
 import { whiten } from '@chakra-ui/theme-tools';
 import { Search2Icon } from '@chakra-ui/icons';
 
-import Card from '../components/Card';
+import Card from '../../components/Card';
 
 const optionStyle = {
 	background: 'white',
@@ -35,18 +35,18 @@ const Recipes = () => {
 	return (
 		<Layout>
 			<Box
-				fontSize='48px'
+				fontSize={{ base: '2.5rem', md: '4rem' }}
 				fontFamily='dosis'
 				fontWeight='bold'
 				color='text.100'
-				mt='20px'
+				mt='5'
 			>
 				Our Delecious Recipes
 			</Box>
 			<Box my='5'>
 				<Formik
 					initialValues={{
-						mainMeat: '',
+						category: '',
 						keywords: '',
 					}}
 					onSubmit={(values) => {
@@ -59,8 +59,8 @@ const Recipes = () => {
 								<Field
 									sx={inputStyle}
 									as={Select}
-									id='mainMeat'
-									name='mainMeat'
+									id='category'
+									name='category'
 									focusBorderColor={whiten('secondary.100', 20)}
 									_hover={{
 										borderColor: 'secondary.100',
@@ -68,10 +68,12 @@ const Recipes = () => {
 									iconColor='secondary.100'
 								>
 									<option style={optionStyle}>All</option>
-									<option style={optionStyle}>Chicken</option>
-									<option style={optionStyle}>Pork</option>
-									<option style={optionStyle}>Sea Food</option>
-									<option style={optionStyle}>Vegan</option>
+									<option style={optionStyle}>Breakfast</option>
+									<option style={optionStyle}>Soups</option>
+									<option style={optionStyle}>BEEF, LAMB & PORK</option>
+									<option style={optionStyle}>FISH</option>
+									<option style={optionStyle}>VEGETARIAN</option>
+									<option style={optionStyle}>SALADS</option>
 								</Field>
 								<Field
 									as={Input}
@@ -86,6 +88,7 @@ const Recipes = () => {
 									}}
 									_focus={{
 										borderColor: whiten('secondary.100', 30),
+										shadow: 'none',
 									}}
 								/>
 								<Button
@@ -118,10 +121,9 @@ const Recipes = () => {
 				{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(({ id }) => (
 					<Card
 						title='Healthy Salad'
-						mainMeat='Vegan'
-						method='Classic'
 						key={id}
-						alt='Salad'
+						category='Salad'
+						serves='2 adults'
 					/>
 				))}
 			</Flex>

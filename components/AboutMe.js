@@ -37,14 +37,18 @@ const AboutMe = () => {
 			</Stack>
 			<VStack flex={1} alignItems='flex-start' rowGap='40px'>
 				<Box
-					fontSize={'64px'}
+					fontSize={{ base: '3.25rem', md: '3.5rem' }}
 					fontFamily='dosis'
 					color='primary.100'
 					fontWeight='bold'
 				>
 					Meet Our Chef
 				</Box>
-				<Box fontSize={'32px'} fontFamily='saira' color='text.200'>
+				<Box
+					fontSize={{ base: '1.25rem', md: '1.75rem' }}
+					fontFamily='saira'
+					color='text.200'
+				>
 					<Box
 						fontFamily='saira'
 						color='secondary.100'
