@@ -23,7 +23,7 @@ const Hero = () => {
 				>
 					All happiness starts from delicious meal.
 				</Box>
-				<ButtonLink href='/recipes' text='Our Recipes' />
+				<ButtonLink href='/recipes' text='Our Recipes' variant='green' />
 			</VStack>
 			<Stack
 				flex={1}
