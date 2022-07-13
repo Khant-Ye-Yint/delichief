@@ -141,7 +141,7 @@ const RecipeItem = () => {
 						>
 							{dummyData.directions.map((chunk, index) => (
 								<HStack
-									alignItems='center'
+									alignItems='flex-start'
 									justifyContent='flex-start'
 									spacing='3'
 									key={index}
