@@ -46,7 +46,7 @@ const RecipeItem = () => {
 				<VStack
 					flex='1'
 					justifyContent='center'
-					alignItems={{ base: 'center', lg: 'flex-start' }}
+					alignItems={{ base: 'center', xl: 'flex-start' }}
 				>
 					<Box
 						bg='white'

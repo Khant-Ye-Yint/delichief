@@ -32,7 +32,7 @@ const inputStyle = {
 	border: '2px solid',
 };
 
-const EditItem = () => {
+const AddPage = () => {
 	const router = useRouter();
 	const { id } = router.query;
 
@@ -43,7 +43,7 @@ const EditItem = () => {
 				fontWeight='bold'
 				fontSize={{ base: '2.5rem', md: '4rem' }}
 			>
-				Edit {id}
+				Add Recipe
 			</Box>
 			<Box my='5'>
 				<Formik
@@ -58,15 +58,6 @@ const EditItem = () => {
 						imgUrl: '',
 					}}
 					onSubmit={(values) => {
-						// values.title = '';
-						// values.category = '';
-						// values.serves = '';
-						// values.preperationTime = '';
-						// values.cookingTime = '';
-						// values.ingredients = '';
-						// values.directions = '';
-						// values.imgUrl = '';
-
 						console.log(JSON.stringify(values, null, 2));
 					}}
 				>
@@ -381,7 +372,7 @@ const EditItem = () => {
 										}}
 										shadow='md'
 									>
-										Update
+										Add
 									</Button>
 									<Link href='/dashboard'>
 										<Button
@@ -410,4 +401,4 @@ const EditItem = () => {
 	);
 };
 
-export default EditItem;
+export default AddPage;

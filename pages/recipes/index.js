@@ -55,7 +55,7 @@ const Recipes = () => {
 				>
 					{({ handleSubmit }) => (
 						<form onSubmit={handleSubmit}>
-							<HStack maxW={['100%', '80%', '40%']}>
+							<HStack maxW={['100%', '80%', '50%', '40%']}>
 								<Field
 									sx={inputStyle}
 									as={Select}
@@ -113,9 +113,9 @@ const Recipes = () => {
 			<Flex
 				flexWrap='wrap'
 				flexDir='row'
-				justifyContent='center'
+				justifyContent={{ base: 'center', md: 'space-between' }}
 				alignItems='center'
-				gap='20'
+				gap='10'
 				my='20'
 			>
 				{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(({ id }) => (

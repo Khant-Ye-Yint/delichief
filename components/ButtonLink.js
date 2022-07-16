@@ -6,15 +6,15 @@ const ButtonLink = ({ href, text, variant, size }) => {
 		<Link href={href}>
 			<Box
 				color='background'
-				fontSize={(size = 'sm' ? '1rem' : '1.75rem')}
+				fontSize={size != 'sm' ? '1.75rem' : '1rem'}
 				fontFamily='dosis'
 				fontWeight='bold'
 				bg={variant == 'green' ? 'primary.100' : 'secondary.100'}
 				_hover={{ bg: variant == 'green' ? 'primary.200' : 'secondary.200' }}
-				px={(size = 'sm' ? '3' : '5')}
-				py={(size = 'sm' ? '2' : '3')}
+				px={{ base: '3', md: '4' }}
+				py={{ base: '2', md: '2' }}
 				cursor='pointer'
-				borderRadius={(size = 'sm' ? '10' : '15')}
+				borderRadius={{ base: '10', md: '15' }}
 			>
 				{text}
 			</Box>

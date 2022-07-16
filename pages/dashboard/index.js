@@ -16,13 +16,16 @@ import ButtonLink from '../../components/ButtonLink';
 const Dashboard = () => {
 	return (
 		<Layout>
-			<Box
-				fontFamily='dosis'
-				fontWeight='bold'
-				fontSize={{ base: '2.5rem', md: '4rem' }}
-			>
-				Dashboard
-			</Box>
+			<HStack justifyContent='space-between'>
+				<Box
+					fontFamily='dosis'
+					fontWeight='bold'
+					fontSize={{ base: '2.5rem', md: '4rem' }}
+				>
+					Dashboard
+				</Box>
+				<ButtonLink href='/dashboard/add' text='Add' variant='green' />
+			</HStack>
 			<TableContainer>
 				<Table variant='simple'>
 					<Thead fontFamily='dosis'>
@@ -44,8 +47,9 @@ const Dashboard = () => {
 										href='/dashboard/edit/someId'
 										text='Edit'
 										variant='green'
+										size='sm'
 									/>
-									<ButtonLink href='/dashboard/edit' text='Delete' />
+									<ButtonLink href='/dashboard/edit' text='Delete' size='sm' />
 								</HStack>
 							</Td>
 						</Tr>
@@ -59,8 +63,9 @@ const Dashboard = () => {
 										href='/dashboard/edit/someId'
 										text='Edit'
 										variant='green'
+										size='sm'
 									/>
-									<ButtonLink href='/dashboard/edit' text='Delete' />
+									<ButtonLink href='/dashboard/edit' text='Delete' size='sm' />
 								</HStack>
 							</Td>
 						</Tr>

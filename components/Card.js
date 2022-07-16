@@ -13,7 +13,7 @@ const Card = ({ title, category, serves }) => {
 
 	return (
 		<Box
-			w={{ base: '16rem', lg: '20rem' }}
+			w={{ base: '16rem', lg: '15rem' }}
 			bg='white'
 			borderRadius={15}
 			overflow='hidden'
@@ -45,7 +45,7 @@ const Card = ({ title, category, serves }) => {
 				<Box
 					color='primary.100'
 					fontWeight='bold'
-					fontSize={35}
+					fontSize={30}
 					fontFamily='dosis'
 				>
 					{title}
@@ -55,7 +55,7 @@ const Card = ({ title, category, serves }) => {
 						bg='secondary.100'
 						color='background'
 						fontWeight='bold'
-						fontSize={12}
+						fontSize={10}
 						fontFamily='saira'
 						px='2'
 						py='1'
@@ -67,7 +67,7 @@ const Card = ({ title, category, serves }) => {
 						bg='primary.100'
 						color='background'
 						fontWeight='bold'
-						fontSize={12}
+						fontSize={10}
 						fontFamily='saira'
 						px='2'
 						py='1'
