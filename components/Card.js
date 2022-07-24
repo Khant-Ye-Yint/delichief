@@ -7,9 +7,13 @@ import { useRouter } from 'next/router';
 
 import SaladImg from '../public/salad.jpg';
 
-const Card = ({ title, category, serves }) => {
+const Card = ({ id, title, category, serves }) => {
 	const [hover, setHover] = useState(false);
 	const router = useRouter();
+
+	const truncate = (str, n) => {
+		return str.length > n ? str.substr(0, n - 1) + '...' : str;
+	};
 
 	return (
 		<Box
@@ -23,7 +27,7 @@ const Card = ({ title, category, serves }) => {
 			}}
 			onMouseEnter={() => setHover(true)}
 			onMouseLeave={() => setHover(false)}
-			onClick={() => router.push(`/recipes/${title}`)}
+			onClick={() => router.push(`/recipes/${id}`)}
 		>
 			<Box
 				w='full'
@@ -41,14 +45,19 @@ const Card = ({ title, category, serves }) => {
 					objectPosition='center'
 				/>
 			</Box>
-			<VStack px='5' py='4' alignItems='flex-start' justifyContent='center'>
+			<VStack
+				px='5'
+				py='4'
+				alignItems='flex-start'
+				justifyContent='space-between'
+			>
 				<Box
 					color='primary.100'
 					fontWeight='bold'
-					fontSize={30}
+					fontSize='1.75rem'
 					fontFamily='dosis'
 				>
-					{title}
+					{truncate(title, 16)}
 				</Box>
 				<HStack>
 					<Badge

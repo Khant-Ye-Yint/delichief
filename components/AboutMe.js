@@ -19,8 +19,8 @@ const AboutMe = () => {
 				alignItems={{ base: 'center', lg: 'flex-start' }}
 			>
 				<Box
-					w={{ base: '300px', md: '430px' }}
-					h={{ base: '500px', md: '700px' }}
+					w={{ base: '300px', md: '350px' }}
+					h={{ base: '500px', md: '600px' }}
 					position='relative'
 					borderRadius={20}
 					overflow='hidden'

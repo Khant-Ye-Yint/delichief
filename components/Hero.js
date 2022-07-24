@@ -16,7 +16,7 @@ const Hero = () => {
 		>
 			<VStack flex={1} alignItems='flex-start' rowGap='40px'>
 				<Box
-					fontSize={{ base: '4.25rem', md: '6rem' }}
+					fontSize={{ base: '4.25rem', md: '5.5rem' }}
 					fontFamily='dosis'
 					color='text.100'
 					fontWeight='bold'

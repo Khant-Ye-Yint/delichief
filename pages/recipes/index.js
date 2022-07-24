@@ -6,14 +6,17 @@ import {
 	Button,
 	Input,
 	Select,
-	VStack,
-	Badge,
 	Flex,
+	Grid,
+	GridItem,
+	Stack,
 } from '@chakra-ui/react';
 import { whiten } from '@chakra-ui/theme-tools';
 import { Search2Icon } from '@chakra-ui/icons';
+import axios from 'axios';
 
 import Card from '../../components/Card';
+import { useState } from 'react';
 
 const optionStyle = {
 	background: 'white',
@@ -31,7 +34,9 @@ const inputStyle = {
 	border: '2px solid',
 };
 
-const Recipes = () => {
+const Recipes = ({ data }) => {
+	const [filteredData, setFilteredData] = useState(data);
+
 	return (
 		<Layout>
 			<Box
@@ -43,14 +48,43 @@ const Recipes = () => {
 			>
 				Our Delecious Recipes
 			</Box>
-			<Box my='5'>
+			<Box mt='5' mb='10'>
 				<Formik
 					initialValues={{
 						category: '',
 						keywords: '',
 					}}
 					onSubmit={(values) => {
-						console.log(JSON.stringify(values, null, 2));
+						const dataWeWant = [];
+
+						if (values.category == 'All') {
+							if (values.keywords == '') {
+								setFilteredData(data);
+								return;
+							}
+
+							dataWeWant = data.filter((chunk) => {
+								return chunk.title
+									.toLowerCase()
+									.includes(values.keywords.toLowerCase());
+							});
+							setFilteredData(dataWeWant);
+							return;
+						}
+
+						// first filter
+						dataWeWant = data.filter((chunk) => {
+							return chunk.category == values.category;
+						});
+
+						// second filter
+						dataWeWant = dataWeWant.filter((chunk) => {
+							return chunk.title
+								.toLowerCase()
+								.includes(values.keywords.toLowerCase());
+						});
+
+						setFilteredData(dataWeWant);
 					}}
 				>
 					{({ handleSubmit }) => (
@@ -68,7 +102,7 @@ const Recipes = () => {
 									iconColor='secondary.100'
 								>
 									<option style={optionStyle}>All</option>
-									<option style={optionStyle}>Breakfast</option>
+									<option style={optionStyle}>BREAKFAST</option>
 									<option style={optionStyle}>Soups</option>
 									<option style={optionStyle}>BEEF, LAMB & PORK</option>
 									<option style={optionStyle}>FISH</option>
@@ -110,7 +144,30 @@ const Recipes = () => {
 					)}
 				</Formik>
 			</Box>
-			<Flex
+			<Grid
+				templateColumns={{
+					base: 'repeat(1, 1fr)',
+					md: 'repeat(2, 1fr)',
+					lg: 'repeat(3, 1fr)',
+					xl: 'repeat(5, 1fr)',
+				}}
+				gap={7}
+			>
+				{filteredData.map((chunk) => (
+					<GridItem key={chunk.id}>
+						<HStack justifyContent='center' alignItems='center'>
+							<Card
+								id={chunk.id}
+								title={chunk.title}
+								category={chunk.category}
+								serves={chunk.serves}
+							/>
+						</HStack>
+					</GridItem>
+				))}
+			</Grid>
+
+			{/* <Flex
 				flexWrap='wrap'
 				flexDir='row'
 				justifyContent={{ base: 'center', md: 'space-between' }}
@@ -118,17 +175,22 @@ const Recipes = () => {
 				gap='10'
 				my='20'
 			>
-				{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(({ id }) => (
+				{filteredData.map((chunk) => (
 					<Card
-						title='Healthy Salad'
-						key={id}
-						category='Salad'
-						serves='2 adults'
+						key={chunk.id}
+						title={chunk.title}
+						category={chunk.category}
+						serves={chunk.serves}
 					/>
 				))}
-			</Flex>
+			</Flex> */}
 		</Layout>
 	);
 };
+
+export async function getStaticProps() {
+	const res = await axios.get('http://localhost:5236/api/Delichef');
+	return { props: { data: res.data }, revalidate: 60 };
+}
 
 export default Recipes;

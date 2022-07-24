@@ -13,7 +13,7 @@ import {
 import { whiten } from '@chakra-ui/theme-tools';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
+import axios from 'axios';
 import { Formik, Field } from 'formik';
 
 const optionStyle = {
@@ -32,9 +32,8 @@ const inputStyle = {
 	border: '2px solid',
 };
 
-const EditItem = () => {
+const EditItem = ({ data }) => {
 	const router = useRouter();
-	const { id } = router.query;
 
 	return (
 		<Layout>
@@ -43,19 +42,22 @@ const EditItem = () => {
 				fontWeight='bold'
 				fontSize={{ base: '2.5rem', md: '4rem' }}
 			>
-				Edit {id}
+				Edit{' '}
+				<Box color='primary.100' display='inline'>
+					{data.title}
+				</Box>
 			</Box>
 			<Box my='5'>
 				<Formik
 					initialValues={{
-						title: '',
+						title: data.title,
 						category: 'Breakfast',
-						serves: '',
-						preparationTime: '',
-						cookingTime: '',
-						ingredients: '',
-						directions: '',
-						imgUrl: '',
+						serves: data.serves,
+						preparationTime: data.prepTime,
+						cookingTime: data.cookTime,
+						ingredients: data.ingredients,
+						directions: data.directions,
+						imgUrl: data.imgUrl,
 					}}
 					onSubmit={(values) => {
 						// values.title = '';
@@ -409,5 +411,24 @@ const EditItem = () => {
 		</Layout>
 	);
 };
+
+export async function getStaticPaths() {
+	const res = await axios.get('http://localhost:5236/api/Delichef');
+	const paths = res.data.map((chunk) => {
+		return {
+			params: { id: chunk.id },
+		};
+	});
+
+	return { paths, fallback: false };
+}
+
+export async function getStaticProps({ params }) {
+	const res = await axios.get(
+		`http://localhost:5236/api/Delichef/${params.id}`
+	);
+	console.log(res.data);
+	return { props: { data: res.data }, revalidate: 60 };
+}
 
 export default EditItem;

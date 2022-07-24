@@ -12,8 +12,10 @@ import {
 } from '@chakra-ui/react';
 import Layout from '../../components/Layout';
 import ButtonLink from '../../components/ButtonLink';
+import Button from '../../components/Button';
+import axios from 'axios';
 
-const Dashboard = () => {
+const Dashboard = ({ data }) => {
 	return (
 		<Layout>
 			<HStack justifyContent='space-between'>
@@ -37,38 +39,24 @@ const Dashboard = () => {
 						</Tr>
 					</Thead>
 					<Tbody fontFamily='saira'>
-						<Tr>
-							<Td>Healthy Salad</Td>
-							<Td>Two Adults</Td>
-							<Td>Salad</Td>
-							<Td isNumeric>
-								<HStack justifyContent='flex-end'>
-									<ButtonLink
-										href='/dashboard/edit/someId'
-										text='Edit'
-										variant='green'
-										size='sm'
-									/>
-									<ButtonLink href='/dashboard/edit' text='Delete' size='sm' />
-								</HStack>
-							</Td>
-						</Tr>
-						<Tr>
-							<Td>Healthy Salad</Td>
-							<Td>Two Adults</Td>
-							<Td>Salad</Td>
-							<Td isNumeric>
-								<HStack justifyContent='flex-end'>
-									<ButtonLink
-										href='/dashboard/edit/someId'
-										text='Edit'
-										variant='green'
-										size='sm'
-									/>
-									<ButtonLink href='/dashboard/edit' text='Delete' size='sm' />
-								</HStack>
-							</Td>
-						</Tr>
+						{data.map((chunk) => (
+							<Tr key={chunk.id}>
+								<Td>{chunk.title}</Td>
+								<Td>{chunk.serves}</Td>
+								<Td>{chunk.category}</Td>
+								<Td isNumeric>
+									<HStack justifyContent='flex-end'>
+										<ButtonLink
+											href={`/dashboard/edit/${chunk.id}`}
+											text='Edit'
+											variant='green'
+											size='sm'
+										/>
+										<Button text='Delete' size='sm' />
+									</HStack>
+								</Td>
+							</Tr>
+						))}
 					</Tbody>
 					<Tfoot>
 						<Tr>
@@ -83,5 +71,10 @@ const Dashboard = () => {
 		</Layout>
 	);
 };
+
+export async function getStaticProps() {
+	const res = await axios.get('http://localhost:5236/api/Delichef');
+	return { props: { data: res.data }, revalidate: 60 };
+}
 
 export default Dashboard;

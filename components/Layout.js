@@ -7,7 +7,6 @@ const Layout = ({ children }) => {
 	return (
 		<Stack
 			minH='100vh'
-			w='full'
 			justifyContent='center'
 			alignItems='center'
 			bg='background'
@@ -17,7 +16,7 @@ const Layout = ({ children }) => {
 				minH='100vh'
 				justifyContent='space-between'
 				alignItems='center'
-				maxW={{ base: '90%', md: '80%' }}
+				maxW={{ base: '90%', md: '900px' }}
 				minW='80%'
 			>
 				<Navbar />
