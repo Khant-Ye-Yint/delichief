@@ -1,6 +1,8 @@
 import { Box } from '@chakra-ui/react';
 
-const ButtonLink = ({ text, variant, size }) => {
+const ButtonLink = (props) => {
+	const { text, variant, size } = props;
+
 	return (
 		<Box
 			color='background'
@@ -13,6 +15,7 @@ const ButtonLink = ({ text, variant, size }) => {
 			py={{ base: '2', md: '2' }}
 			cursor='pointer'
 			borderRadius={{ base: '10', md: '15' }}
+			{...props}
 		>
 			{text}
 		</Box>

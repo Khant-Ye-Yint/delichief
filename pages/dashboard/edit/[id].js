@@ -15,6 +15,10 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import axios from 'axios';
 import { Formik, Field } from 'formik';
+import { useState } from 'react';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const optionStyle = {
 	background: 'white',
@@ -34,6 +38,7 @@ const inputStyle = {
 
 const EditItem = ({ data }) => {
 	const router = useRouter();
+	const [buttonDisabled, setButtonDisabled] = useState(false);
 
 	return (
 		<Layout>
@@ -51,7 +56,7 @@ const EditItem = ({ data }) => {
 				<Formik
 					initialValues={{
 						title: data.title,
-						category: 'Breakfast',
+						category: data.category,
 						serves: data.serves,
 						preparationTime: data.prepTime,
 						cookingTime: data.cookTime,
@@ -60,16 +65,39 @@ const EditItem = ({ data }) => {
 						imgUrl: data.imgUrl,
 					}}
 					onSubmit={(values) => {
-						// values.title = '';
-						// values.category = '';
-						// values.serves = '';
-						// values.preperationTime = '';
-						// values.cookingTime = '';
-						// values.ingredients = '';
-						// values.directions = '';
-						// values.imgUrl = '';
+						// console.log(JSON.stringify(values, null, 2));
+						setButtonDisabled(true);
 
-						console.log(JSON.stringify(values, null, 2));
+						const recipe = {
+							Id: data.id,
+							Title: values.title,
+							Category: values.category,
+							ImgUrl: values.imgUrl,
+							Serves: values.serves,
+							PrepTime: values.preparationTime,
+							CookTime: values.cookingTime,
+							Ingredients: values.ingredients,
+							Directions: values.directions,
+						};
+
+						axios
+							.put('http://localhost:5236/api/Delichef', recipe)
+							.then((res) => console.log(res))
+							.catch((err) => console.log(err));
+
+						setTimeout(() => {
+							router.push('/dashboard');
+						}, 4000);
+
+						toast.success('Recipe Updated', {
+							position: 'top-right',
+							autoClose: 3000,
+							hideProgressBar: false,
+							closeOnClick: true,
+							pauseOnHover: true,
+							draggable: true,
+							progress: undefined,
+						});
 					}}
 				>
 					{({ handleSubmit, touched, errors }) => (
@@ -131,7 +159,7 @@ const EditItem = ({ data }) => {
 										}}
 										iconColor='secondary.100'
 									>
-										<option style={optionStyle}>Breakfast</option>
+										<option style={optionStyle}>BREAKFAST</option>
 										<option style={optionStyle}>Soups</option>
 										<option style={optionStyle}>BEEF, LAMB & PORK</option>
 										<option style={optionStyle}>FISH</option>
@@ -382,6 +410,7 @@ const EditItem = ({ data }) => {
 											bg: whiten('secondary.100', 30),
 										}}
 										shadow='md'
+										disabled={buttonDisabled}
 									>
 										Update
 									</Button>
@@ -408,6 +437,7 @@ const EditItem = ({ data }) => {
 					)}
 				</Formik>
 			</Box>
+			<ToastContainer />
 		</Layout>
 	);
 };
@@ -427,7 +457,7 @@ export async function getStaticProps({ params }) {
 	const res = await axios.get(
 		`http://localhost:5236/api/Delichef/${params.id}`
 	);
-	console.log(res.data);
+
 	return { props: { data: res.data }, revalidate: 60 };
 }
 

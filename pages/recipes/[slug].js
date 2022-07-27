@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router';
 import Layout from '../../components/Layout';
-import { Box, VStack, HStack, Stack } from '@chakra-ui/react';
+import { Box, VStack, HStack } from '@chakra-ui/react';
 import Image from 'next/image';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import axios from 'axios';
@@ -11,8 +11,8 @@ const RecipeItem = ({ data }) => {
 	const router = useRouter();
 	const { slug } = router.query;
 
-	const directionsArray = data.directions.split(',');
-	const ingredientsArray = data.ingredients.split(',');
+	const directionsArray = data.directions.split('|');
+	const ingredientsArray = data.ingredients.split('|');
 
 	// const dummyData = {
 	// 	ingredients: [

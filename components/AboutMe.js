@@ -2,12 +2,12 @@ import { Stack, VStack, Box } from '@chakra-ui/react';
 import ButtonLink from './ButtonLink';
 import Image from 'next/image';
 
-import ChefImg from '../public/chef.jpg';
+import ChefImg from '../public/chef.png';
 
 const AboutMe = () => {
 	return (
 		<Stack
-			minH='90vh'
+			minH='80vh'
 			justifyContent='space-between'
 			alignItems='center'
 			rowGap='80px'
@@ -19,8 +19,8 @@ const AboutMe = () => {
 				alignItems={{ base: 'center', lg: 'flex-start' }}
 			>
 				<Box
-					w={{ base: '300px', md: '350px' }}
-					h={{ base: '500px', md: '600px' }}
+					w='500px'
+					h='700px'
 					position='relative'
 					borderRadius={20}
 					overflow='hidden'
@@ -29,7 +29,7 @@ const AboutMe = () => {
 						src={ChefImg}
 						alt='salad'
 						layout='fill'
-						objectFit='cover'
+						objectFit='contain'
 						objectPosition='center'
 						placeholder='blur'
 					/>
@@ -55,13 +55,12 @@ const AboutMe = () => {
 						fontWeight='bold'
 						display='inline-block'
 					>
-						Eant Wint Hunt ,
+						Masaharu Morimoto ,
 					</Box>{' '}
-					presenter from Forever Group MRTV-4 and Channel-7 mostly popular in
-					cooking shows and other cooking programs. My recipes are fast and easy
-					to follow. You can change meat, fish, seafood, vegetables included in
-					my recipe to your alikes. I hope my recipes are useful for office
-					stuffs, children and anyone who doesn’t have time to cook.
+					(森本 正治, Morimoto Masaharu, born May 26, 1955, in Hiroshima, Japan)
+					is a Japanese chef, best known as an Iron Chef on the Japanese TV
+					cooking show Iron Chef and its spinoff Iron Chef America. He is also
+					known for his unique style of presenting food.
 				</Box>
 			</VStack>
 		</Stack>

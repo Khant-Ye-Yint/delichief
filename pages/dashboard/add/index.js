@@ -13,8 +13,12 @@ import {
 import { whiten } from '@chakra-ui/theme-tools';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState } from 'react';
 import { Formik, Field } from 'formik';
+import { uuid } from 'uuidv4';
 
 const optionStyle = {
 	background: 'white',
@@ -29,12 +33,11 @@ const inputStyle = {
 	_hover: {
 		borderColor: 'secondary.100',
 	},
-	border: '2px solid',
 };
 
 const AddPage = () => {
 	const router = useRouter();
-	const { id } = router.query;
+	const [buttonDisabled, setButtonDisabled] = useState(false);
 
 	return (
 		<Layout>
@@ -49,7 +52,7 @@ const AddPage = () => {
 				<Formik
 					initialValues={{
 						title: '',
-						category: 'Breakfast',
+						category: 'BREAKFAST',
 						serves: '',
 						preparationTime: '',
 						cookingTime: '',
@@ -58,7 +61,40 @@ const AddPage = () => {
 						imgUrl: '',
 					}}
 					onSubmit={(values) => {
-						console.log(JSON.stringify(values, null, 2));
+						// console.log(JSON.stringify(values, null, 2));
+
+						setButtonDisabled(true);
+
+						const recipe = {
+							Id: uuid(),
+							Title: values.title,
+							Category: values.category,
+							ImgUrl: values.imgUrl,
+							Serves: values.serves,
+							PrepTime: values.preparationTime,
+							CookTime: values.cookingTime,
+							Ingredients: values.ingredients,
+							Directions: values.directions,
+						};
+
+						axios
+							.post('http://localhost:5236/api/Delichef', recipe)
+							.then((res) => console.log(res))
+							.catch((err) => console.log(err));
+
+						setTimeout(() => {
+							router.push('/dashboard');
+						}, 4000);
+
+						toast.success('Recipe Added', {
+							position: 'top-right',
+							autoClose: 3000,
+							hideProgressBar: false,
+							closeOnClick: true,
+							pauseOnHover: true,
+							draggable: true,
+							progress: undefined,
+						});
 					}}
 				>
 					{({ handleSubmit, touched, errors }) => (
@@ -120,7 +156,7 @@ const AddPage = () => {
 										}}
 										iconColor='secondary.100'
 									>
-										<option style={optionStyle}>Breakfast</option>
+										<option style={optionStyle}>BREAKFAST</option>
 										<option style={optionStyle}>Soups</option>
 										<option style={optionStyle}>BEEF, LAMB & PORK</option>
 										<option style={optionStyle}>FISH</option>
@@ -371,6 +407,7 @@ const AddPage = () => {
 											bg: whiten('secondary.100', 30),
 										}}
 										shadow='md'
+										disabled={buttonDisabled}
 									>
 										Add
 									</Button>
@@ -397,6 +434,7 @@ const AddPage = () => {
 					)}
 				</Formik>
 			</Box>
+			<ToastContainer />
 		</Layout>
 	);
 };

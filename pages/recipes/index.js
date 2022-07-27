@@ -6,10 +6,8 @@ import {
 	Button,
 	Input,
 	Select,
-	Flex,
 	Grid,
 	GridItem,
-	Stack,
 } from '@chakra-ui/react';
 import { whiten } from '@chakra-ui/theme-tools';
 import { Search2Icon } from '@chakra-ui/icons';
@@ -74,7 +72,9 @@ const Recipes = ({ data }) => {
 
 						// first filter
 						dataWeWant = data.filter((chunk) => {
-							return chunk.category == values.category;
+							return (
+								chunk.category.toLowerCase() == values.category.toLowerCase()
+							);
 						});
 
 						// second filter
@@ -103,7 +103,7 @@ const Recipes = ({ data }) => {
 								>
 									<option style={optionStyle}>All</option>
 									<option style={optionStyle}>BREAKFAST</option>
-									<option style={optionStyle}>Soups</option>
+									<option style={optionStyle}>SOUPS</option>
 									<option style={optionStyle}>BEEF, LAMB & PORK</option>
 									<option style={optionStyle}>FISH</option>
 									<option style={optionStyle}>VEGETARIAN</option>
@@ -166,24 +166,6 @@ const Recipes = ({ data }) => {
 					</GridItem>
 				))}
 			</Grid>
-
-			{/* <Flex
-				flexWrap='wrap'
-				flexDir='row'
-				justifyContent={{ base: 'center', md: 'space-between' }}
-				alignItems='center'
-				gap='10'
-				my='20'
-			>
-				{filteredData.map((chunk) => (
-					<Card
-						key={chunk.id}
-						title={chunk.title}
-						category={chunk.category}
-						serves={chunk.serves}
-					/>
-				))}
-			</Flex> */}
 		</Layout>
 	);
 };
