@@ -60,7 +60,7 @@ const RecipeItem = ({ data }) => {
 					>
 						<Box w='full' h='20rem' position='relative'>
 							<Image
-								src={SaladImg}
+								src={data.imgUrl}
 								alt={slug}
 								layout='fill'
 								objectFit='cover'

@@ -14,7 +14,7 @@ const ButtonLink = (props) => {
 			px={{ base: '3', md: '4' }}
 			py={{ base: '2', md: '2' }}
 			cursor='pointer'
-			borderRadius={{ base: '10', md: '15' }}
+			borderRadius={{ base: '10' }}
 			{...props}
 		>
 			{text}

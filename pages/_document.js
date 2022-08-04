@@ -11,6 +11,11 @@ export default class Document extends NextDocument {
 					<ColorModeScript initialColorMode={theme.config.initialColorMode} />
 					<Main />
 					<NextScript />
+					<script
+						async
+						src='https://upload-widget.cloudinary.com/global/all.js'
+						type='text/javascript'
+					></script>
 				</body>
 			</Html>
 		);

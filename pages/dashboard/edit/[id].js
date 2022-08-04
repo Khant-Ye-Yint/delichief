@@ -72,7 +72,6 @@ const EditItem = ({ data }) => {
 							Id: data.id,
 							Title: values.title,
 							Category: values.category,
-							ImgUrl: values.imgUrl,
 							Serves: values.serves,
 							PrepTime: values.preparationTime,
 							CookTime: values.cookingTime,
@@ -361,7 +360,7 @@ const EditItem = ({ data }) => {
 									/>
 									<FormErrorMessage>{errors.directions}</FormErrorMessage>
 								</FormControl>
-								<FormControl isInvalid={!!errors.imgUrl && touched.imgUrl}>
+								{/* <FormControl isInvalid={!!errors.imgUrl && touched.imgUrl}>
 									<FormLabel
 										htmlFor='imgUrl'
 										fontSize='1.5rem'
@@ -396,7 +395,7 @@ const EditItem = ({ data }) => {
 										}}
 									/>
 									<FormErrorMessage>{errors.imgUrl}</FormErrorMessage>
-								</FormControl>
+								</FormControl> */}
 								<HStack>
 									<Button
 										type='submit'

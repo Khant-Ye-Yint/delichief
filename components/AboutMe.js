@@ -10,7 +10,7 @@ const AboutMe = () => {
 			minH='80vh'
 			justifyContent='space-between'
 			alignItems='center'
-			rowGap='80px'
+			rowGap={{ base: '30px', md: '80px' }}
 			flexDir={{ base: 'column-reverse', xl: 'row' }}
 		>
 			<Stack
@@ -19,8 +19,8 @@ const AboutMe = () => {
 				alignItems={{ base: 'center', lg: 'flex-start' }}
 			>
 				<Box
-					w='500px'
-					h='700px'
+					w={{ base: '300px', md: '500px' }}
+					h={{ base: '500px', md: '700px' }}
 					position='relative'
 					borderRadius={20}
 					overflow='hidden'

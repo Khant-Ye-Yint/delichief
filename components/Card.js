@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 
 import SaladImg from '../public/salad.jpg';
 
-const Card = ({ id, title, category, serves }) => {
+const Card = ({ id, title, category, serves, imgUrl }) => {
 	const [hover, setHover] = useState(false);
 	const router = useRouter();
 
@@ -29,21 +29,23 @@ const Card = ({ id, title, category, serves }) => {
 			onMouseLeave={() => setHover(false)}
 			onClick={() => router.push(`/recipes/${id}`)}
 		>
-			<Box
-				w='full'
-				h='15rem'
-				position='relative'
-				transition='ease-in'
-				transitionDuration='0.3s'
-				filter={hover && 'grayscale(80%)'}
-			>
-				<Image
-					src={SaladImg}
-					alt={title}
-					layout='fill'
-					objectFit='cover'
-					objectPosition='center'
-				/>
+			<Box w='full' h='15rem' overflow='hidden'>
+				<Box
+					w='full'
+					h='full'
+					position='relative'
+					transition='ease-in'
+					transitionDuration='0.4s'
+					transform={hover && 'scale(1.2)'}
+				>
+					<Image
+						src={imgUrl}
+						alt={title}
+						layout='fill'
+						objectFit='cover'
+						objectPosition='center'
+					/>
+				</Box>
 			</Box>
 			<VStack
 				px='5'

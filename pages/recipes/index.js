@@ -161,6 +161,7 @@ const Recipes = ({ data }) => {
 								title={chunk.title}
 								category={chunk.category}
 								serves={chunk.serves}
+								imgUrl={chunk.imgUrl}
 							/>
 						</HStack>
 					</GridItem>

@@ -16,7 +16,7 @@ const Layout = ({ children }) => {
 				minH='100vh'
 				justifyContent='space-between'
 				alignItems='center'
-				maxW={{ base: '90%', md: '900px' }}
+				maxW={{ base: '90%', md: '700px' }}
 				minW='80%'
 			>
 				<Navbar />

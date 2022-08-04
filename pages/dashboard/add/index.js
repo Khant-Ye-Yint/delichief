@@ -19,6 +19,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
 import { Formik, Field } from 'formik';
 import { uuid } from 'uuidv4';
+import { ImageUpload } from '../../../components/ImageUpload';
 
 const optionStyle = {
 	background: 'white',
@@ -38,6 +39,7 @@ const inputStyle = {
 const AddPage = () => {
 	const router = useRouter();
 	const [buttonDisabled, setButtonDisabled] = useState(false);
+	const [imgUrl, setImgUrl] = useState('');
 
 	return (
 		<Layout>
@@ -58,7 +60,7 @@ const AddPage = () => {
 						cookingTime: '',
 						ingredients: '',
 						directions: '',
-						imgUrl: '',
+						imgUrl: imgUrl,
 					}}
 					onSubmit={(values) => {
 						// console.log(JSON.stringify(values, null, 2));
@@ -69,7 +71,7 @@ const AddPage = () => {
 							Id: uuid(),
 							Title: values.title,
 							Category: values.category,
-							ImgUrl: values.imgUrl,
+							ImgUrl: imgUrl,
 							Serves: values.serves,
 							PrepTime: values.preparationTime,
 							CookTime: values.cookingTime,
@@ -358,7 +360,7 @@ const AddPage = () => {
 									/>
 									<FormErrorMessage>{errors.directions}</FormErrorMessage>
 								</FormControl>
-								<FormControl isInvalid={!!errors.imgUrl && touched.imgUrl}>
+								{/* <FormControl isInvalid={!!errors.imgUrl && touched.imgUrl}>
 									<FormLabel
 										htmlFor='imgUrl'
 										fontSize='1.5rem'
@@ -393,7 +395,8 @@ const AddPage = () => {
 										}}
 									/>
 									<FormErrorMessage>{errors.imgUrl}</FormErrorMessage>
-								</FormControl>
+								</FormControl> */}
+								<ImageUpload setImgUrl={setImgUrl} />
 								<HStack>
 									<Button
 										type='submit'
