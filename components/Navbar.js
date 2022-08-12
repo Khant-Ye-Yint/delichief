@@ -9,6 +9,7 @@ import {
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { UserButton, useAuth } from '@clerk/nextjs';
 
 import { BiMenuAltRight } from 'react-icons/bi';
 import { MdOutlineClose } from 'react-icons/md';
@@ -53,6 +54,8 @@ const Navbar = () => {
 	const device = useBreakpointValue({ base: 'phone', md: 'others' });
 	const { allowScroll, preventScroll } = useScrollControl();
 
+	const { isLoaded, userId } = useAuth();
+
 	useEffect(() => {
 		isOpen ? preventScroll() : allowScroll();
 	}, [isOpen, allowScroll, preventScroll]);
@@ -92,6 +95,7 @@ const Navbar = () => {
 							href='/about'
 							active={path.includes('about')}
 						/>
+						{isLoaded && userId && <UserButton />}
 					</HStack>
 				)}
 			</HStack>
@@ -112,6 +116,7 @@ const Navbar = () => {
 							href='/about'
 							active={path.includes('about')}
 						/>
+						{isLoaded && userId && <UserButton />}
 					</VStack>
 				</VStack>
 			</Slide>

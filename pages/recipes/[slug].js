@@ -5,8 +5,6 @@ import Image from 'next/image';
 import { ChevronRightIcon } from '@chakra-ui/icons';
 import axios from 'axios';
 
-import SaladImg from '../../public/salad.jpg';
-
 const RecipeItem = ({ data }) => {
 	const router = useRouter();
 	const { slug } = router.query;
@@ -177,7 +175,6 @@ export async function getStaticProps({ params }) {
 	const res = await axios.get(
 		`http://localhost:5236/api/Delichef/${params.slug}`
 	);
-	console.log(res.data);
 	return { props: { data: res.data }, revalidate: 60 };
 }
 

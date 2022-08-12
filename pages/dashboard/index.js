@@ -39,7 +39,7 @@ const Dashboard = ({ data }) => {
 			chunk.title.toLowerCase().includes(keywords.toLocaleLowerCase())
 		);
 		setFilteredData(desiredData);
-	}, [keywords]);
+	}, [keywords, data]);
 
 	return (
 		<Layout>
